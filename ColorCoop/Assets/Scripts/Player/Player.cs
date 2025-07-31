@@ -32,16 +32,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // TOGGLE DIFFERENTLY LATER
-        {
-            _toggleDraw = !_toggleDraw;
-            if (_toggleDraw)
-            {
-                GameObject newLine = Instantiate(linePrefab);
-                activeLine = newLine.GetComponent<Line>();
-            }
-        }
-
         if (!_toggleDraw)
         {
             activeLine = null;
@@ -51,6 +41,16 @@ public class Player : MonoBehaviour
         {
             activeLine.UpdateLine(transform.position);
         }
+    }
+
+    public void OnToggleDraw()
+    {
+        _toggleDraw = !_toggleDraw;
+            if (_toggleDraw)
+            {
+                GameObject newLine = Instantiate(linePrefab);
+                activeLine = newLine.GetComponent<Line>();
+            }
     }
 
     void FixedUpdate()
